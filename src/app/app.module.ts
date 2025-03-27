@@ -6,22 +6,28 @@ import { AppComponent } from './app.component';
 
 
 import { AddTaskComponent } from './add-task/add-task.component';
-import { TuiInputModule } from '@taiga-ui/kit';
-import { TuiButtonModule } from '@taiga-ui/core';
+import { TuiInputModule, TuiIslandModule } from '@taiga-ui/kit';
+import { TuiButtonModule, TuiDialogModule, TuiRootModule } from '@taiga-ui/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TaskListComponent } from './task-list/task-list.component';
+import { SingleTaskComponent } from './single-task/single-task.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddTaskComponent,
-    TaskListComponent
+    TaskListComponent,
+    SingleTaskComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     TuiInputModule,
-    TuiButtonModule,ReactiveFormsModule
+    TuiButtonModule,
+    ReactiveFormsModule, 
+    TuiIslandModule,  
+    TuiRootModule,
+    TuiDialogModule
   ],
   providers: [], 
   bootstrap: [AppComponent]

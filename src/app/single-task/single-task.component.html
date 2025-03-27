@@ -1,0 +1,27 @@
+<div class="task">
+    <tui-island  class="tui-col_md-4">    <h3 class="tui-island__title">Task</h3>
+        <p class="tui-island__paragraph">
+            {{item}}
+        </p>
+        <button
+            appearance="flat"
+            size="m"
+            tuiButton
+            type="button"
+            class="tui-island__footer-button"
+            (click)="openEdit()"
+        >
+            Edit
+        </button>
+        <button
+            appearance="flat"
+            size="m"
+            tuiButton
+            type="button"
+            class="tui-island__footer-button"
+            (click)="delete(index)"
+        >
+            Delete
+        </button>
+    </tui-island>
+</div>

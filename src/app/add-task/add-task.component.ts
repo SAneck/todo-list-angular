@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { TasksService } from '../tasks.service';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-add-task',
@@ -15,6 +16,7 @@ export class AddTaskComponent {
   addTask() {
     if (this.taskText.value === null) return alert('Govno')
     this.tasksService.addTask(this.taskText.value)
+    console.log(this.taskText.value)
   }
 
 }
