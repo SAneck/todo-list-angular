@@ -1,16 +1,30 @@
-<div *ngFor="let task of tasks; let i = index">
-        <div *ngIf="task.isEditing">
-            <tui-input [formControl]="newTaskText" class="add-input">
-                Add your task
-                <input
-                tuiTextfield
-                type="text"  
-            >
-            </tui-input>
-            <button (click)="editTask(i)">Edit</button>    
-        </div>
-
-        <div *ngIf="!task.isEditing">
-            <app-single-task [item]="task.text" (deleteTask)="deleteTask($event)" [index]="i" ></app-single-task>
-        </div>
+<!-- <div *ngFor="let task of tasks; let i = index" class="task">
+       
 </div>
+<div *ngFor="let task of tasks; let i = index" class="task"> -->
+
+
+
+<div class="card" >
+    <p-dataView #dv [value]="tasks">
+        <ng-template pTemplate="list" let-products>
+            <div class="grid grid-nogutter">
+                <div class="col-12" *ngFor="let task of tasks;let i = index; let first = first" class="col-12">
+                    <div class="flex flex-column sm:flex-row sm:align-items-center p-4 gap-3" [ngClass]="{ 'border-top-1 surface-border': !first }">           
+                        <div *ngIf="task.isEditing">
+                            <input [formControl]="newTaskText"
+                            type="text"  
+                            >
+                            <button (click)="editTask(i)">Edit</button>    
+                        </div>
+                        <div *ngIf="!task.isEditing">
+                            <app-single-task [taskText]="task.text" [index]="i" (deleteTask)="deleteTask(i)"></app-single-task>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-dataView>
+</div>
+
+<!-- </div> -->

@@ -10,7 +10,12 @@ export interface Task {
 })
 export class TasksService {
 
-  constructor() {}
+  tasks$ = new BehaviorSubject<Task[]>([]) 
+
+
+
+
+
 
   addTask(text: string) {
     const arr = this.tasks$.value
@@ -19,33 +24,27 @@ export class TasksService {
   }
 
   deleteTask(ind: number){
-    
     const arr = this.tasks$.value
     const newArr = arr.filter((_, index) => ind !== index)
     this.tasks$.next(newArr)
   }
 
   editTask(newText: string, index: number){
-    console.log(index)
-    console.log(this.tasks$.value)
     const arr = this.tasks$.value.map((item, itemIndex) => {
-      console.log(index, itemIndex)
+ 
       if(index === itemIndex){
-        console.log(123)
         return {
           ...item,
+          isEditing: false,
           text: newText
         } 
       }else {
-        console.log(321)
         return item
       }
     })
-    console.log(this.tasks$.value)
     this.tasks$.next(arr)
   }
 
-  tasks$ = new BehaviorSubject<Task[]>([]) 
 }
 
 //   addTask(text: string){

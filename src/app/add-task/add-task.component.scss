@@ -1,3 +1,8 @@
-.add-input {
-    width: 400px;
+.add-field {
+    display: flex;
+    padding: 50px;
+
+    p-floatLabel {
+        margin-right: 20px;
+    }
 }

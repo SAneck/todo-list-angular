@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { TasksService } from '../tasks.service';
-import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-add-task',
@@ -9,14 +8,15 @@ import { filter } from 'rxjs';
   styleUrls: ['./add-task.component.scss']
 })
 export class AddTaskComponent {
+
   taskText: FormControl<string | null> = new FormControl<string>('')
 
-  constructor(private tasksService: TasksService) { }
+  constructor(private tasksService: TasksService) { 
+  }
 
   addTask() {
     if (this.taskText.value === null) return alert('Govno')
     this.tasksService.addTask(this.taskText.value)
-    console.log(this.taskText.value)
+    this.taskText.reset()
   }
-
 }

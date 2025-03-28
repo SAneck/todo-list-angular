@@ -1,6 +1,6 @@
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { Task, TasksService } from './../tasks.service';
-import { Component, Input, Output } from '@angular/core';
+import { Component } from '@angular/core';
 @Component({
   selector: 'app-task-list',
   templateUrl: './task-list.component.html',
@@ -10,13 +10,19 @@ export class TaskListComponent {
 
   tasks: Task[] = []
 
+
+
   newTaskText: FormControl<string | null> = new FormControl<string>('')
 
   constructor(public tasksService: TasksService){
-    tasksService.tasks$.subscribe(value => this.tasks = value)
+    tasksService.tasks$.subscribe(value => {
+      this.newTaskText.setValue(value.find(el => el.isEditing)?.text || '');
+      this.tasks = value
+    })
   }
 
   editTask(index: number){
+    console.log(this.tasksService.tasks$.value)
     if (this.newTaskText === null) return alert('dfsaf');
     this.tasksService.editTask(this.newTaskText.value || '', index)
   }

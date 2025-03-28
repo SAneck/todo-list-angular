@@ -1,0 +1,14 @@
+.single-task-field{
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .task-button{
+        display: flex;
+        gap: 10px;
+    }
+}
+hr{
+    margin-bottom: 40px;
+}

@@ -1,27 +1,15 @@
-<div class="task">
-    <tui-island  class="tui-col_md-4">    <h3 class="tui-island__title">Task</h3>
-        <p class="tui-island__paragraph">
-            {{item}}
-        </p>
-        <button
-            appearance="flat"
-            size="m"
-            tuiButton
-            type="button"
-            class="tui-island__footer-button"
-            (click)="openEdit()"
-        >
-            Edit
-        </button>
-        <button
-            appearance="flat"
-            size="m"
-            tuiButton
-            type="button"
-            class="tui-island__footer-button"
-            (click)="delete(index)"
-        >
-            Delete
-        </button>
-    </tui-island>
+
+<div class="flex flex-column md:flex-row justify-content-between md:align-items-center flex-1 gap-4 single-task-field">
+    <div class="flex flex-row md:flex-column justify-content-between align-items-start gap-2">
+        <div>
+            <div class="text-lg font-medium text-900 mt-2">{{taskText}}</div>
+        </div>
+    </div>
+    <div class="flex flex-column md:align-items-end gap-5">
+        <div class="flex flex-row-reverse md:flex-row gap-2 task-button">
+            <p-button icon="pi pi-shopping-cart" (click)="openEdit()" class="flex-auto md:flex-initial white-space-nowrap" label="Edit" />
+            <p-button icon="pi pi-shopping-cart" (click)="delete(index)" class="flex-auto md:flex-initial white-space-nowrap" label="delete" />
+        </div>
+    </div>
 </div>
+<hr>
