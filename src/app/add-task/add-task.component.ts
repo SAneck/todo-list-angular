@@ -11,8 +11,7 @@ export class AddTaskComponent {
 
   taskText: FormControl<string | null> = new FormControl<string>('')
 
-  constructor(private tasksService: TasksService) { 
-  }
+  constructor(private tasksService: TasksService) {   }
 
   addTask() {
     if (this.taskText.value === null) return alert('Govno')

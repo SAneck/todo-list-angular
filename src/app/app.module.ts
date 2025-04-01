@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DataViewModule } from 'primeng/dataview';
 import { TagModule } from 'primeng/tag';
+import { CheckboxModule } from 'primeng/checkbox';
 
 
 import { AddTaskComponent } from './add-task/add-task.component';
@@ -33,6 +34,7 @@ import { SingleTaskComponent } from './single-task/single-task.component';
     DataViewModule,
     AppRoutingModule,
     ReactiveFormsModule, 
+    CheckboxModule
   ],
   providers: [], 
   bootstrap: [AppComponent]

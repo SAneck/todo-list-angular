@@ -22,7 +22,7 @@ export class TaskListComponent {
   }
 
   editTask(index: number){
-    console.log(this.tasksService.tasks$.value)
+
     if (this.newTaskText === null) return alert('dfsaf');
     this.tasksService.editTask(this.newTaskText.value || '', index)
   }

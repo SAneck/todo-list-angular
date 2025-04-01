@@ -1,4 +1,3 @@
-
 <div class="flex flex-column md:flex-row justify-content-between md:align-items-center flex-1 gap-4 single-task-field">
     <div class="flex flex-row md:flex-column justify-content-between align-items-start gap-2">
         <div>
@@ -9,6 +8,7 @@
         <div class="flex flex-row-reverse md:flex-row gap-2 task-button">
             <p-button icon="pi pi-shopping-cart" (click)="openEdit()" class="flex-auto md:flex-initial white-space-nowrap" label="Edit" />
             <p-button icon="pi pi-shopping-cart" (click)="delete(index)" class="flex-auto md:flex-initial white-space-nowrap" label="delete" />
+            <p-checkbox [formControl]="checkedControl" [binary]="true"/>
         </div>
     </div>
 </div>

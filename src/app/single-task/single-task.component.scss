@@ -1,14 +1,15 @@
-.single-task-field{
+.single-task-field {
 
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    .task-button{
+    .task-button {
         display: flex;
         gap: 10px;
     }
 }
-hr{
+
+hr {
     margin-bottom: 40px;
 }

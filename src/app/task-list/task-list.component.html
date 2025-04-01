@@ -12,13 +12,16 @@
                 <div class="col-12" *ngFor="let task of tasks;let i = index; let first = first" class="col-12">
                     <div class="flex flex-column sm:flex-row sm:align-items-center p-4 gap-3" [ngClass]="{ 'border-top-1 surface-border': !first }">           
                         <div *ngIf="task.isEditing">
-                            <input [formControl]="newTaskText"
-                            type="text"  
-                            >
-                            <button (click)="editTask(i)">Edit</button>    
+                            <div class="edit-field">
+                                <p-floatLabel  type="text" class="add-input">
+                                    <input pInputText [formControl]="newTaskText" type="text">
+                                    <label for="username">Add your  </label>
+                                </p-floatLabel>
+                                <p-button (click)="editTask(i)">Edit</p-button>    
+                            </div>
                         </div>
                         <div *ngIf="!task.isEditing">
-                            <app-single-task [taskText]="task.text" [index]="i" (deleteTask)="deleteTask(i)"></app-single-task>    
+                            <app-single-task [taskText]="task.text" [index]="i" [checked]="task.isChecked" (deleteTask)="deleteTask(i)" ></app-single-task>    
                         </div>
                     </div>
                 </div>
