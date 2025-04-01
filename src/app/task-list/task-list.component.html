@@ -21,7 +21,7 @@
                             </div>
                         </div>
                         <div *ngIf="!task.isEditing">
-                            <app-single-task [taskText]="task.text" [index]="i" [checked]="task.isChecked" (deleteTask)="deleteTask(i)" ></app-single-task>    
+                            <app-single-task [taskText]="task.text" [index]="i" (deleteTask)="deleteTask(i)" [checked]="task.isChecked"></app-single-task>    
                         </div>
                     </div>
                 </div>

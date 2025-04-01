@@ -15,6 +15,7 @@ import { AddTaskComponent } from './add-task/add-task.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TaskListComponent } from './task-list/task-list.component';
 import { SingleTaskComponent } from './single-task/single-task.component';
+import { CountTasksComponent } from './count-tasks/count-tasks.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { SingleTaskComponent } from './single-task/single-task.component';
     AddTaskComponent,
     TaskListComponent,
     SingleTaskComponent,
+    CountTasksComponent,
   ],
   imports: [
     BrowserModule,

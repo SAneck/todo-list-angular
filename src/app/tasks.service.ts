@@ -11,7 +11,9 @@ export interface Task {
 })
 export class TasksService {
 
-  tasks$ = new BehaviorSubject<Task[]>([])
+ tasks$ = new BehaviorSubject<Task[]>([])
+
+
 
   addTasksToStorage() {
     localStorage.setItem('tasks', JSON.stringify(this.tasks$.value))
@@ -37,24 +39,26 @@ export class TasksService {
     this.addTasksToStorage()
   }
 
-  editTask(newText: string, index: number, isChecked?: boolean) {
+  editTask(newText: string, index: number, itemChecked?: boolean) {
+    const arr = this.tasks$.value.map((item, itemIndex) => {
+      if (index === itemIndex) {
+        return {
+          ...item,
+          isEditing: false,
+          text: newText,
+          isChecked: itemChecked === undefined ? item.isChecked : itemChecked
+        }
+      } else {
+        return item
+      }
+    })
 
+    const x = 5
+    const y = 7
+    console.log()
 
-    console.log('abobA', isChecked)
-    // const arr = this.tasks$.value.map((item, itemIndex) => {
-    //   if (index === itemIndex) {
-    //     return {
-    //       ...item,
-    //       isEditing: false,
-    //       text: newText,
-    //     }
-    //   } else {
-    //     return item
-    //   }
-    // })
-
-    // this.tasks$.next(arr)
-    // this.addTasksToStorage()
+    this.tasks$.next(arr)
+    this.addTasksToStorage()
   }
 
 }
