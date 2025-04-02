@@ -6,10 +6,10 @@
 
 
 <div class="card" >
-    <p-dataView #dv [value]="tasks">
+    <p-dataView #dv [value]="$any(tasks$ |async)">
         <ng-template pTemplate="list" let-products>
             <div class="grid grid-nogutter">
-                <div class="col-12" *ngFor="let task of tasks;let i = index; let first = first" class="col-12">
+                <div class="col-12" *ngFor="let task of tasks$ | async;let i = index; let first = first" class="col-12">
                     <div class="flex flex-column sm:flex-row sm:align-items-center p-4 gap-3" [ngClass]="{ 'border-top-1 surface-border': !first }">           
                         <div *ngIf="task.isEditing">
                             <div class="edit-field">
@@ -21,13 +21,15 @@
                             </div>
                         </div>
                         <div *ngIf="!task.isEditing">
-                            <app-single-task [taskText]="task.text" [index]="i" (deleteTask)="deleteTask(i)" [checked]="task.isChecked"></app-single-task>    
+                            <app-single-task [taskText]="task.text" [index]="i" (deleteTask)="deleteTask(i)" [checked]="task.isChecked"[date]="task.date"></app-single-task>    
                         </div>
                     </div>
                 </div>
             </div>
         </ng-template>
+        
     </p-dataView>
 </div>
+<app-count-tasks [countUncompleted]="completed$ | async" [countUncompleted]="uncompleted$ | async"></app-count-tasks>
 
 <!-- </div> -->

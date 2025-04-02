@@ -4,6 +4,10 @@
     justify-content: space-between;
     align-items: center;
 
+    .tasktxt{
+        text-decoration: line-through;
+    }
+
     .task-button {
         display: flex;
         gap: 10px;

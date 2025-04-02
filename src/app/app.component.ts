@@ -1,3 +1,4 @@
+import { BehaviorSubject } from 'rxjs';
 import { TasksService } from './tasks.service';
 import { Component } from '@angular/core';
 
@@ -9,7 +10,10 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'angular-todo-16';
 
+
   constructor(private tasksService: TasksService) {
     this.tasksService.getTasksFromStorage()
+    console.log(tasksService.tasks$.value.length);
   }
+
 }

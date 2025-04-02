@@ -5,6 +5,7 @@ export interface Task {
   text: string
   isEditing: boolean
   isChecked: boolean
+  date: Date
 }
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,19 @@ export class TasksService {
 
  tasks$ = new BehaviorSubject<Task[]>([])
 
+  taskCompletedCount$ = new BehaviorSubject(0)
+  taskUncompletedCount$ = new BehaviorSubject(0)
 
+  constructor(){
+    this.tasks$.subscribe(value => {
+      const completed = value.filter(item => item.isChecked).length
+      console.log(completed)
+      const uncompleted = value.filter(item => !item.isChecked).length
+      console.log(uncompleted)
+      this.taskCompletedCount$.next(completed)
+      this.taskUncompletedCount$.next(uncompleted)
+    })
+  }
 
   addTasksToStorage() {
     localStorage.setItem('tasks', JSON.stringify(this.tasks$.value))
@@ -27,9 +40,10 @@ export class TasksService {
 
   addTask(text: string) {
     const arr = this.tasks$.value
-    arr.push({ text, isEditing: false, isChecked: false })
+    arr.push({ text, isEditing: false, isChecked: false, date: new Date() })
     this.tasks$.next(arr)
     this.addTasksToStorage()
+    console.log(this.tasks$.value)
   }
 
   deleteTask(ind: number) {
@@ -52,11 +66,6 @@ export class TasksService {
         return item
       }
     })
-
-    const x = 5
-    const y = 7
-    console.log()
-
     this.tasks$.next(arr)
     this.addTasksToStorage()
   }

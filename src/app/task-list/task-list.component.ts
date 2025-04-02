@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { Task, TasksService } from './../tasks.service';
 import { Component } from '@angular/core';
@@ -8,20 +9,19 @@ import { Component } from '@angular/core';
 })
 export class TaskListComponent {
 
-  tasks: Task[] = []
+  tasks$: Observable<Task[]> | undefined;
 
-
+  completed$: Observable<number> | undefined
+  uncompleted$: Observable<number> | undefined
 
   newTaskText: FormControl<string | null> = new FormControl<string>('')
 
   constructor(public tasksService: TasksService){
-    tasksService.tasks$.subscribe(value => {
-      this.newTaskText.setValue(value.find(el => el.isEditing)?.text || '');
-      this.tasks = value
-    })
+     this.tasks$ = this.tasksService.tasks$
+     this.completed$ = tasksService.taskUncompletedCount$
   }
 
-  editTask(index: number){
+  editTask(index: number){  
 
     if (this.newTaskText === null) return alert('dfsaf');
     this.tasksService.editTask(this.newTaskText.value || '', index)

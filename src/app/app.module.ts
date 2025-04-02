@@ -16,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TaskListComponent } from './task-list/task-list.component';
 import { SingleTaskComponent } from './single-task/single-task.component';
 import { CountTasksComponent } from './count-tasks/count-tasks.component';
+import { NgStyle } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { CountTasksComponent } from './count-tasks/count-tasks.component';
     DataViewModule,
     AppRoutingModule,
     ReactiveFormsModule, 
-    CheckboxModule
+    CheckboxModule,
+    NgStyle
   ],
   providers: [], 
   bootstrap: [AppComponent]

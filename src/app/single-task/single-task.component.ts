@@ -1,6 +1,6 @@
 import { FormControl } from '@angular/forms';
 import { Task, TasksService } from './../tasks.service';
-import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 @Component({
   selector: 'app-single-task',
   templateUrl: './single-task.component.html',
@@ -17,6 +17,8 @@ export class SingleTaskComponent {
 
   @Input() checked: boolean = false
 
+  @Input() date: Date | undefined;
+
   delete(index: number) {
     this.deleteTask.emit(index)
   }
@@ -28,6 +30,8 @@ export class SingleTaskComponent {
     this.controlChecked.setValue(this.checked)
     this.controlChecked.valueChanges.subscribe(val => this.taskService.editTask(this.taskText, this.index, val || false))
   }
+
+
 
   openEdit(): void {
     
