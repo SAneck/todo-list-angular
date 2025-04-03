@@ -1,5 +1,5 @@
 import { Injectable, Input } from '@angular/core';
-import { BehaviorSubject, filter, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, filter, map, Observable, Subject, tap } from 'rxjs';
 
 export interface Task {
   text: string
@@ -14,18 +14,14 @@ export class TasksService {
 
  tasks$ = new BehaviorSubject<Task[]>([])
 
-  taskCompletedCount$ = new BehaviorSubject(0)
-  taskUncompletedCount$ = new BehaviorSubject(0)
+  taskCompletedCount$ = this.tasks$.pipe(
+    map(tasks => tasks.filter((el: any) => el.isChecked).length)
+  )
+  taskUncompletedCount$ = this.tasks$.pipe(
+    map(tasks => tasks.filter(el => !el.isChecked).length)
+  )
 
   constructor(){
-    this.tasks$.subscribe(value => {
-      const completed = value.filter(item => item.isChecked).length
-      console.log(completed)
-      const uncompleted = value.filter(item => !item.isChecked).length
-      console.log(uncompleted)
-      this.taskCompletedCount$.next(completed)
-      this.taskUncompletedCount$.next(uncompleted)
-    })
   }
 
   addTasksToStorage() {
@@ -55,14 +51,15 @@ export class TasksService {
 
   editTask(newText: string, index: number, itemChecked?: boolean) {
     const arr = this.tasks$.value.map((item, itemIndex) => {
+      // item.isChecked = false
       if (index === itemIndex) {
         return {
           ...item,
           isEditing: false,
           text: newText,
           isChecked: itemChecked === undefined ? item.isChecked : itemChecked
-        }
-      } else {
+        } 
+      }  else {
         return item
       }
     })

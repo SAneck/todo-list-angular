@@ -18,7 +18,8 @@ export class TaskListComponent {
 
   constructor(public tasksService: TasksService){
      this.tasks$ = this.tasksService.tasks$
-     this.completed$ = tasksService.taskUncompletedCount$
+     this.completed$ = tasksService.taskCompletedCount$
+     this.uncompleted$ = tasksService.taskUncompletedCount$
   }
 
   editTask(index: number){  

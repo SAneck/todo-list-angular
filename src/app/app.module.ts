@@ -17,7 +17,8 @@ import { TaskListComponent } from './task-list/task-list.component';
 import { SingleTaskComponent } from './single-task/single-task.component';
 import { CountTasksComponent } from './count-tasks/count-tasks.component';
 import { NgStyle } from '@angular/common';
-
+import { DeleteModalComponent } from './delete-modal/delete-modal.component';
+import { DialogModule } from 'primeng/dialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +26,8 @@ import { NgStyle } from '@angular/common';
     TaskListComponent,
     SingleTaskComponent,
     CountTasksComponent,
+    DeleteModalComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,9 @@ import { NgStyle } from '@angular/common';
     AppRoutingModule,
     ReactiveFormsModule, 
     CheckboxModule,
-    NgStyle
+    NgStyle,
+    DialogModule 
+    // поговорить про концепцию модулей в ангулярое
   ],
   providers: [], 
   bootstrap: [AppComponent]

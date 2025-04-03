@@ -13,6 +13,8 @@ export class SingleTaskComponent {
   @Output() deleteTask = new EventEmitter()
   @Input() index = -1
 
+  visibleModal: boolean = false
+
   controlChecked: FormControl<boolean | null> = new FormControl<boolean | null>(false);
 
   @Input() checked: boolean = false
@@ -47,6 +49,11 @@ export class SingleTaskComponent {
       }
     }))
   }
+
+  showDialog() {
+    this.visibleModal = true;
+  }
+
 }
 
 
