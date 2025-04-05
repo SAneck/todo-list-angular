@@ -1,6 +1,7 @@
 import { FormControl } from '@angular/forms';
 import { Task, TasksService } from './../tasks.service';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { interval, merge, of, take } from 'rxjs';
 @Component({
   selector: 'app-single-task',
   templateUrl: './single-task.component.html',
@@ -25,8 +26,7 @@ export class SingleTaskComponent {
     this.deleteTask.emit(index)
   }
 
-  constructor(private taskService: TasksService) {
-  }
+  constructor(private taskService: TasksService) {}
 
   ngOnInit() {
     this.controlChecked.setValue(this.checked)
@@ -53,6 +53,15 @@ export class SingleTaskComponent {
   showDialog() {
     this.visibleModal = true;
   }
+
+
+
+
+
+  
+
+
+
 
 }
 
