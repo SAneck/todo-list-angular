@@ -1,48 +1,23 @@
 import { ButtonModule } from 'primeng/button';
-import { NgModule } from '@angular/core';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
-import { BrowserModule } from '@angular/platform-browser';
-import { InputTextModule } from 'primeng/inputtext';
 import { FloatLabelModule } from 'primeng/floatlabel';
-import { AppRoutingModule } from './app-routing.module';
+import { InputTextModule } from 'primeng/inputtext';
+import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { DataViewModule } from 'primeng/dataview';
-import { TagModule } from 'primeng/tag';
-import { CheckboxModule } from 'primeng/checkbox';
-
-
 import { AddTaskComponent } from './add-task/add-task.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TaskListComponent } from './task-list/task-list.component';
-import { SingleTaskComponent } from './single-task/single-task.component';
-import { CountTasksComponent } from './count-tasks/count-tasks.component';
-import { NgStyle } from '@angular/common';
-import { DeleteModalComponent } from './delete-modal/delete-modal.component';
-import { DialogModule } from 'primeng/dialog';
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+
 @NgModule({
   declarations: [
     AppComponent,
     AddTaskComponent,
-    TaskListComponent,
-    SingleTaskComponent,
-    CountTasksComponent,
-    DeleteModalComponent,
-    
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
-    InputTextModule,
     FormsModule,
+    InputTextModule,
     FloatLabelModule,
-    ButtonModule, 
-    TagModule,
-    DataViewModule,
-    AppRoutingModule,
-    ReactiveFormsModule, 
-    CheckboxModule,
-    NgStyle,
-    DialogModule 
+    ButtonModule
     // поговорить про концепцию модулей в ангулярое
   ],
   providers: [], 
